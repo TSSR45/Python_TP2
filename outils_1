@@ -1,0 +1,27 @@
+import os, stat
+
+# Création du fichier exemple_file.txt
+file = open("exemple_file.txt","w")
+file.write("Blah blah blah")
+file.close()
+
+# Chemin du fichier
+path = "exemple_file.txt"
+
+# Variables à 0 car cela correspond à l'id du root (ex: cat /etc/passwd)
+uid = 0
+gid = 0
+
+# On utilise chown pour changer le propriétaire
+os.chown(path, uid, gid)
+print("\nL'id du fichier du propriétaire et du groupe a changé")
+
+print("\nLa nouvelle id du propriétaire du fichier est:", os.stat(path).st_uid)
+print("La nouvelle id du groupe du fichier est:", os.stat(path).st_gid)
+
+# On utilise chmod pour changer les permissions 
+os.chmod("exemple_file.txt", 0o0700)
+print("Le fichier peut être écrit,lu et éxécuté par:","root id 0")
+
+# commande ls -ld
+os.system('ls -ld exemple_file.txt')
