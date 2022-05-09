@@ -1,5 +1,4 @@
 import ffmpeg
-import glob
 
 audio1 = ffmpeg.input("fight-club.wav")
 audio2 = ffmpeg.input("hal-9000.wav")
